@@ -1,7 +1,9 @@
 import { Star, Heart, ShoppingCart, GitCompare } from "lucide-react";
-import { useState } from "react";
+import { useCart } from "@/hooks/useCart";
+import { useWishlist } from "@/hooks/useWishlist";
 
 interface ProductCardProps {
+  id: string;
   name: string;
   image: string;
   rating: number;
@@ -12,6 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   name,
   image,
   rating,
@@ -20,7 +23,20 @@ const ProductCard = ({
   originalPrice,
   discount,
 }: ProductCardProps) => {
-  const [isLiked, setIsLiked] = useState(false);
+  const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  
+  const liked = isInWishlist(id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addToCart(id);
+  };
+
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    toggleWishlist(id);
+  };
 
   return (
     <div className="bg-card rounded-xl overflow-hidden card-hover shadow-card group">
@@ -33,21 +49,23 @@ const ProductCard = ({
         />
         
         {/* Discount Badge */}
-        <span className="absolute top-3 left-3 bg-success text-success-foreground text-xs font-bold px-2 py-1 rounded-md">
-          {discount}% OFF
-        </span>
+        {discount > 0 && (
+          <span className="absolute top-3 left-3 bg-success text-success-foreground text-xs font-bold px-2 py-1 rounded-md">
+            {discount}% OFF
+          </span>
+        )}
 
         {/* Quick Actions */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
           <button
-            onClick={() => setIsLiked(!isLiked)}
+            onClick={handleToggleWishlist}
             className={`p-2 rounded-full shadow-lg transition-colors ${
-              isLiked 
+              liked 
                 ? "bg-destructive text-destructive-foreground" 
                 : "bg-card text-foreground hover:bg-destructive hover:text-destructive-foreground"
             }`}
           >
-            <Heart className={`w-4 h-4 ${isLiked ? "fill-current" : ""}`} />
+            <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
           </button>
           <button className="p-2 bg-card rounded-full shadow-lg text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
             <GitCompare className="w-4 h-4" />
@@ -88,15 +106,20 @@ const ProductCard = ({
             <span className="text-lg font-bold text-foreground">
               ₹{price.toLocaleString()}
             </span>
-            <span className="text-sm text-muted-foreground line-through">
-              ₹{originalPrice.toLocaleString()}
-            </span>
+            {originalPrice > price && (
+              <span className="text-sm text-muted-foreground line-through">
+                ₹{originalPrice.toLocaleString()}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-2 pt-2">
-          <button className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+          <button 
+            onClick={handleAddToCart}
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
             <ShoppingCart className="w-4 h-4" />
             Add to Cart
           </button>
