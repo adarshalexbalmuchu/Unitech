@@ -18,7 +18,7 @@ const ProductSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-8 sm:mb-12">
           <button
             onClick={() => setActiveTab("new")}
-            className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 pb-2 border-b-2 ${
+            className={`text-lg sm:text-xl font-display font-bold transition-all duration-300 pb-2 border-b-2 ${
               activeTab === "new"
                 ? "text-foreground border-primary"
                 : "text-muted-foreground border-transparent hover:text-foreground"
@@ -28,7 +28,7 @@ const ProductSection = () => {
           </button>
           <button
             onClick={() => setActiveTab("trending")}
-            className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 pb-2 border-b-2 ${
+            className={`text-lg sm:text-xl font-display font-bold transition-all duration-300 pb-2 border-b-2 ${
               activeTab === "trending"
                 ? "text-secondary border-secondary"
                 : "text-muted-foreground border-transparent hover:text-secondary"

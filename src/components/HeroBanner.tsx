@@ -46,7 +46,7 @@ const HeroBanner = () => {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="relative h-[300px] sm:h-[400px] lg:h-[500px]">
+      <div className="relative h-[280px] sm:h-[350px] lg:h-[420px]">
         {banners.map((banner, index) => (
           <div
             key={banner.id}
@@ -62,20 +62,20 @@ const HeroBanner = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             
             <div className="container mx-auto px-4 h-full flex items-center">
-              <div className="max-w-xl space-y-4 sm:space-y-6 animate-slide-up">
-                <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1.5 rounded-full text-sm font-semibold">
+              <div className="max-w-xl space-y-2 sm:space-y-3 lg:space-y-4 animate-slide-up">
+                <span className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                   {banner.discount}
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground">
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground leading-tight">
                   {banner.title}
                 </h2>
-                <p className="text-lg sm:text-xl text-secondary font-semibold">
+                <p className="text-base sm:text-lg lg:text-xl text-secondary font-semibold">
                   {banner.subtitle}
                 </p>
-                <p className="text-muted-foreground text-sm sm:text-base">
+                <p className="text-muted-foreground text-xs sm:text-sm lg:text-base">
                   {banner.description}
                 </p>
-                <button className="gradient-gold text-secondary-foreground font-semibold px-6 sm:px-8 py-3 rounded-full hover:shadow-glow transition-all duration-300 transform hover:scale-105">
+                <button className="gradient-gold text-secondary-foreground font-semibold px-5 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3 text-sm sm:text-base rounded-full hover:shadow-glow transition-all duration-300 transform hover:scale-105">
                   {banner.cta}
                 </button>
               </div>

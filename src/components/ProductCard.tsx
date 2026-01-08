@@ -95,7 +95,7 @@ const ProductCard = ({
         </div>
 
         {/* Name */}
-        <h3 className="font-medium text-foreground line-clamp-2 text-sm leading-snug min-h-[2.5rem]">
+        <h3 className="font-medium text-foreground line-clamp-2 text-xs sm:text-sm leading-snug min-h-[2.5rem]">
           {name}
         </h3>
 
@@ -103,7 +103,7 @@ const ProductCard = ({
         <div className="space-y-1">
           <p className="text-xs text-secondary font-medium">Special Price</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-foreground">
+            <span className="text-base sm:text-lg font-bold text-foreground">
               ₹{price.toLocaleString()}
             </span>
             {originalPrice > price && (

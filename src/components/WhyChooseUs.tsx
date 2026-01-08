@@ -45,7 +45,7 @@ const WhyChooseUs = () => {
     <section className="py-12 sm:py-16 bg-card border-y border-border">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 sm:mb-12">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3">
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3">
             Why Choose Kohinoor
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">

@@ -28,7 +28,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-card z-50 shadow-2xl animate-slide-up flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-border">
-          <h2 className="font-display font-bold text-xl text-foreground flex items-center gap-2">
+          <h2 className="font-display font-bold text-lg sm:text-xl text-foreground flex items-center gap-2">
             <ShoppingBag className="w-5 h-5" />
             Your Cart
           </h2>

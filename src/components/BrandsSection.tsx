@@ -14,7 +14,7 @@ const BrandsSection = () => {
     <section className="py-12 sm:py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2">
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
             Top Brands
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto rounded-full" />

@@ -3,25 +3,25 @@ import { Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
           {/* Logo & Contact */}
           <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-primary rounded-lg p-2">
-                <span className="text-primary-foreground font-display font-bold text-xl">KE</span>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="bg-primary rounded-lg p-1.5">
+                <span className="text-primary-foreground font-display font-bold text-base sm:text-lg">KE</span>
               </div>
               <div>
-                <h2 className="font-display font-bold text-xl text-foreground">KOHINOOR</h2>
-                <p className="text-xs text-secondary">Electronics Store</p>
+                <h2 className="font-display font-bold text-base sm:text-lg text-foreground">KOHINOOR</h2>
+                <p className="text-[10px] sm:text-xs text-secondary">Electronics Store</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-2 mb-4 text-foreground">
-              <Phone className="w-5 h-5 text-secondary" />
+            <div className="flex items-center gap-2 mb-3 text-foreground">
+              <Phone className="w-4 h-4 text-secondary" />
               <div>
-                <p className="text-xs text-muted-foreground">Got questions? Call us!</p>
-                <p className="font-semibold">022 6163 6464</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Got questions? Call us!</p>
+                <p className="font-semibold text-sm">022 6163 6464</p>
               </div>
             </div>
 
@@ -43,8 +43,8 @@ const Footer = () => {
 
           {/* Find it Fast */}
           <div>
-            <h3 className="font-semibold text-secondary mb-4">Find it Fast</h3>
-            <ul className="space-y-2.5 text-sm">
+            <h3 className="font-semibold text-secondary mb-3 text-sm sm:text-base">Find it Fast</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Accessories</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Air Conditioner</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Laptops & Printer</a></li>

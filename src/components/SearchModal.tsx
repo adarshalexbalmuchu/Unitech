@@ -56,7 +56,7 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
               placeholder="Search for products, brands..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
+              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-sm sm:text-base"
               autoFocus
             />
             <button

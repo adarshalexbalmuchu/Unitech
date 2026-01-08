@@ -33,8 +33,8 @@ const Header = () => {
     <>
       <header className="sticky top-0 z-40">
         {/* Top Bar */}
-        <div className="bg-primary py-2 px-4">
-          <div className="container mx-auto flex items-center justify-between text-sm">
+        <div className="bg-primary py-1.5 px-4">
+          <div className="container mx-auto flex items-center justify-between text-xs sm:text-sm">
             <div className="hidden md:flex items-center gap-6">
               <a href="#" className="flex items-center gap-1 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
                 <MapPin className="w-4 h-4" />
@@ -104,10 +104,10 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 shrink-0">
               <div className="bg-primary rounded-lg p-2">
-                <span className="text-primary-foreground font-display font-bold text-xl">KE</span>
+                <span className="text-primary-foreground font-display font-bold text-lg sm:text-xl">KE</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="font-display font-bold text-xl text-foreground leading-tight">KOHINOOR</h1>
+                <h1 className="font-display font-bold text-lg sm:text-xl text-foreground leading-tight">KOHINOOR</h1>
                 <p className="text-xs text-secondary">Electronics Store</p>
               </div>
             </Link>

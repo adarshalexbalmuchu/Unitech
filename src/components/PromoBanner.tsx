@@ -11,10 +11,10 @@ const PromoBanner = () => {
 
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary-foreground mb-2">
+              <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-secondary-foreground mb-2">
                 New Arrivals: Cutting-Edge Electronics
               </h2>
-              <p className="text-secondary-foreground/80 text-sm sm:text-base lg:text-lg">
+              <p className="text-secondary-foreground/80 text-xs sm:text-sm lg:text-base">
                 Discover the latest gadgets and smart devices
               </p>
             </div>
