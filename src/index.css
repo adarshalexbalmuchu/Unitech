@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,60 +6,48 @@
 
 @layer base {
   :root {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 98%;
+    /* Modern Dark Theme - Calm & Professional */
+    --background: 216 28% 7%;        /* Deep charcoal #0B0F14 */
+    --foreground: 0 0% 95%;          /* Near white */
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 25% 12%;             /* Dark navy card */
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 217 91% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 41 96% 60%;           /* Warm amber accent */
+    --primary-foreground: 216 28% 7%;
 
-    --secondary: 45 93% 58%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 41 96% 60%;         /* Same amber for consistency */
+    --secondary-foreground: 216 28% 7%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 215 20% 16%;            /* Graphite */
+    --muted-foreground: 0 0% 65%;    /* Muted grey text */
 
-    --accent: 45 93% 58%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 215 20% 16%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 217 91% 50%;
+    --border: 215 20% 20%;           /* Subtle borders */
+    --input: 215 20% 20%;
+    --ring: 41 96% 60%;              /* Amber focus ring */
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;                /* Subtle rounded corners */
 
     --success: 142 71% 45%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 0 0% 98%;
 
-    --gradient-gold: linear-gradient(135deg, hsl(45, 93%, 58%) 0%, hsl(35, 91%, 50%) 100%);
-    --gradient-blue: linear-gradient(135deg, hsl(217, 91%, 50%) 0%, hsl(230, 91%, 60%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 5%) 100%);
-
-    --shadow-glow: 0 0 20px hsl(45, 93%, 58%, 0.3);
-    --shadow-card: 0 4px 20px hsl(0, 0%, 0%, 0.3);
-    --shadow-lg: 0 10px 40px hsl(0, 0%, 0%, 0.4);
-
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 50%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 217 91% 50%;
-  }
-
-  .dark {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 98%;
+    --sidebar-background: 215 25% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 41 96% 60%;
+    --sidebar-primary-foreground: 216 28% 7%;
+    --sidebar-accent: 215 20% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 41 96% 60%;
   }
 }
 
@@ -69,59 +57,42 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-  }
-
-  @media (min-width: 640px) {
-    body {
-      font-size: 15px;
-    }
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.011em;
   }
 
   @media (min-width: 1024px) {
     body {
       font-size: 16px;
+      line-height: 1.65;
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
-  }
-}
-
-@layer components {
-  .gradient-gold {
-    background: var(--gradient-gold);
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+    line-height: 1.1;
   }
 
-  .gradient-blue {
-    background: var(--gradient-blue);
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+    line-height: 1.2;
   }
 
-  .text-gradient-gold {
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  h3 {
+    @apply text-xl md:text-2xl font-semibold;
+    line-height: 1.3;
   }
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
+  h4 {
+    @apply text-lg md:text-xl font-medium;
   }
 
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .card-hover:hover {
-    @apply -translate-y-1;
-    box-shadow: var(--shadow-lg);
+  p {
+    @apply text-muted-foreground leading-relaxed;
   }
 }
 

@@ -1,26 +1,26 @@
 const PromoBanner = () => {
   return (
-    <section className="py-8 sm:py-12 bg-background">
+    <section className="py-10 sm:py-12 bg-background">
       <div className="container mx-auto px-4">
-        <div className="gradient-gold rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full translate-y-1/2 -translate-x-1/2" />
-          </div>
+        <div className="bg-card/50 border border-border/40 rounded-lg p-8 sm:p-10 lg:p-12 relative overflow-hidden">
+          {/* Subtle background pattern */}
+          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_80%_50%,hsl(var(--primary)),transparent_70%)]" />
 
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
-              <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-secondary-foreground mb-2">
-                New Arrivals: Cutting-Edge Electronics
+              <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mb-2">
+                New Arrivals in Audio Equipment
               </h2>
-              <p className="text-secondary-foreground/80 text-xs sm:text-sm lg:text-base">
-                Discover the latest gadgets and smart devices
+              <p className="text-muted-foreground text-sm">
+                Discover the latest additions to our catalogue
               </p>
             </div>
-            <button className="bg-secondary-foreground text-secondary font-semibold px-6 sm:px-8 py-3 rounded-full hover:bg-secondary-foreground/90 transition-all duration-300 whitespace-nowrap">
-              Check Out the Latest
-            </button>
+            <a 
+              href="/products?sort=newest"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-6 py-2.5 rounded-lg transition-all whitespace-nowrap text-sm"
+            >
+              View New Products
+            </a>
           </div>
         </div>
       </div>

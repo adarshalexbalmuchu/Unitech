@@ -11,36 +11,30 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <section className="py-12 sm:py-16 bg-background">
+    <section className="py-10 sm:py-12 bg-background border-t border-border/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
-            Top Brands
+        <div className="text-center mb-8">
+          <h2 className="text-xl font-semibold text-foreground mb-1">
+            Trusted Brands
           </h2>
-          <div className="w-12 h-1 bg-primary mx-auto rounded-full" />
+          <p className="text-xs text-muted-foreground">Partner brands we work with</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6">
           {brands.map((brand, index) => (
             <a
               key={brand.name}
               href="#"
-              className="bg-white rounded-xl p-4 sm:p-6 flex items-center justify-center h-20 sm:h-24 hover:shadow-lg transition-all duration-300 group animate-fade-in"
+              className="bg-card/30 border border-border/30 rounded-lg p-5 flex items-center justify-center h-20 hover:border-border transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="max-h-8 sm:max-h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity filter grayscale group-hover:grayscale-0"
+                className="max-h-8 w-auto object-contain opacity-40 grayscale"
               />
             </a>
           ))}
-        </div>
-
-        <div className="text-center mt-8">
-          <button className="bg-muted hover:bg-muted/80 text-foreground font-medium px-6 py-2.5 rounded-full transition-colors inline-flex items-center gap-2">
-            VIEW ALL
-          </button>
         </div>
       </div>
     </section>
