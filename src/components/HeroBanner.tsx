@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import bd1 from "/bd1.png";
+import bd2 from "/bd2.png";
+import bd3 from "/bd3.png";
 
 const banners = [
   {
     id: 1,
-    image: "/bd1.png",
+    image: bd1,
     title: "Premium Audio Equipment",
     subtitle: "Tower Speakers & Home Theatre Systems",
     cta: "Browse Audio",
@@ -13,7 +16,7 @@ const banners = [
   },
   {
     id: 2,
-    image: "/bd2.png",
+    image: bd2,
     title: "Free-to-Air DTH Receivers",
     subtitle: "Reliable entertainment solutions for your home",
     cta: "View DTH Products",
@@ -21,7 +24,7 @@ const banners = [
   },
   {
     id: 3,
-    image: "/bd3.png",
+    image: bd3,
     title: "Professional Audio Solutions",
     subtitle: "Amplifiers, Car Audio & More",
     cta: "Explore All",
