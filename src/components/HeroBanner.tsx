@@ -46,8 +46,8 @@ const HeroBanner = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background to-card/30">
-      <div className="relative h-[350px] sm:h-[450px] lg:h-[550px]">
+    <section className="relative overflow-hidden bg-black">
+      <div className="relative h-[400px] sm:h-[500px] lg:h-[600px]">
         {banners.map((banner, index) => (
           <div
             key={banner.id}
@@ -59,12 +59,12 @@ const HeroBanner = () => {
                   : "opacity-0 translate-x-full"
             }`}
           >
-            {/* Background Image - Full view with no cropping */}
-            <div className="absolute inset-0 flex items-center justify-center p-4">
+            {/* Background Image - Zoomed 16:9 */}
+            <div className="absolute inset-0">
               <img 
                 src={banner.image} 
                 alt="UNITECH Banner"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
