@@ -4,7 +4,9 @@ import {
   Car, 
   Zap, 
   Settings, 
-  Flame
+  Flame,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { useRef } from "react";
 
