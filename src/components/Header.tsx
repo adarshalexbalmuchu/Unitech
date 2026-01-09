@@ -6,7 +6,6 @@ import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import CartSidebar from "./CartSidebar";
 import SearchModal from "./SearchModal";
-import unitechLogo from "/new-logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +36,7 @@ const Header = () => {
           <div className="flex items-center justify-between gap-6">
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0">
-              <img src={unitechLogo} alt="Unitech" className="h-9 w-auto" />
+              <img src={`${import.meta.env.BASE_URL}new-logo.png`} alt="Unitech" className="h-9 w-auto" />
             </Link>
 
             {/* Search Bar - Desktop */}
