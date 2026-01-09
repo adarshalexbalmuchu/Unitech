@@ -7,12 +7,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
           {/* Logo & Contact */}
           <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <img src="/unitech-india-logo.png" alt="Unitech" className="h-8 w-auto" />
-              <div>
-                <h2 className="font-display font-bold text-base sm:text-lg text-foreground">UNITECH</h2>
-                <p className="text-[10px] sm:text-xs text-secondary">expand your life</p>
-              </div>
+            <div className="mb-4">
+              <img src="/unitech-india-logo.png" alt="Unitech" className="h-10 sm:h-12 w-auto mb-4" />
             </div>
             
             <div className="flex items-center gap-2 mb-3 text-foreground">

@@ -102,14 +102,8 @@ const Header = () => {
         <div className="bg-card py-4 px-4 border-b border-border">
           <div className="container mx-auto flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 shrink-0">
-              <div className="flex items-center gap-2">
-                <img src="/unitech-india-logo.png" alt="Unitech" className="h-8 sm:h-10 w-auto" />
-                <div className="hidden sm:block">
-                  <h1 className="font-display font-bold text-lg sm:text-xl text-foreground leading-tight">UNITECH</h1>
-                  <p className="text-xs text-secondary">expand your life</p>
-                </div>
-              </div>
+            <Link to="/" className="flex items-center shrink-0">
+              <img src="/unitech-india-logo.png" alt="Unitech" className="h-10 sm:h-12 w-auto" />
             </Link>
 
             {/* Search Bar */}
