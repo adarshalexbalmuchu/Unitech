@@ -37,16 +37,19 @@ const Header = () => {
         <div className="bg-primary py-1.5 px-4">
           <div className="container mx-auto flex items-center justify-between text-xs sm:text-sm">
             <div className="hidden md:flex items-center gap-6">
-              <a href="#" className="flex items-center gap-1 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
+              <Link to="/categories" className="flex items-center gap-1 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
                 <MapPin className="w-4 h-4" />
-                Store Locator
-              </a>
-              <a href="#" className="text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-                Track Your Order
-              </a>
+                Browse Categories
+              </Link>
+              <Link to="/products" className="text-primary-foreground/90 hover:text-primary-foreground transition-colors">
+                All Products
+              </Link>
             </div>
             <div className="flex items-center gap-4 md:gap-6 ml-auto">
-              <a href="#" className="flex items-center gap-1 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
+              <a 
+                href="mailto:unitechindia@gmail.com" 
+                className="flex items-center gap-1 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+              >
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">Contact Us</span>
               </a>
@@ -129,7 +132,10 @@ const Header = () => {
                 <Search className="w-6 h-6" />
               </button>
               
-              <a href="#" className="hidden sm:flex flex-col items-center gap-1 text-foreground hover:text-primary transition-colors">
+              <a 
+                href="mailto:unitechindia@gmail.com" 
+                className="hidden sm:flex flex-col items-center gap-1 text-foreground hover:text-primary transition-colors"
+              >
                 <Phone className="w-5 h-5" />
                 <span className="text-xs">Support</span>
               </a>
@@ -161,22 +167,22 @@ const Header = () => {
         <nav className="bg-card border-b border-border">
           <div className="container mx-auto px-4">
             <div className="hidden md:flex items-center gap-8 py-3">
-              <button className="flex items-center gap-2 text-secondary font-semibold hover:text-secondary/80 transition-colors">
+              <Link to="/categories" className="flex items-center gap-2 text-secondary font-semibold hover:text-secondary/80 transition-colors">
                 All Categories
                 <ChevronDown className="w-4 h-4" />
-              </button>
-              <a href="#" className="text-secondary font-medium hover:text-secondary/80 transition-colors">
+              </Link>
+              <Link to="/products/hot-selling-products" className="text-secondary font-medium hover:text-secondary/80 transition-colors">
                 Hot Deals
-              </a>
-              <a href="#" className="text-foreground font-medium hover:text-primary transition-colors">
-                Brands Store
-              </a>
-              <a href="#" className="text-foreground font-medium hover:text-primary transition-colors">
-                New Arrivals
-              </a>
-              <a href="#" className="text-foreground font-medium hover:text-primary transition-colors">
-                Best Sellers
-              </a>
+              </Link>
+              <Link to="/products" className="text-foreground font-medium hover:text-primary transition-colors">
+                All Products
+              </Link>
+              <Link to="/products?featured=true" className="text-foreground font-medium hover:text-primary transition-colors">
+                Featured
+              </Link>
+              <Link to="/products?trending=true" className="text-foreground font-medium hover:text-primary transition-colors">
+                Trending
+              </Link>
             </div>
           </div>
         </nav>
@@ -185,11 +191,21 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-card border-b border-border animate-fade-in">
             <div className="container mx-auto px-4 py-4 space-y-3">
-              <a href="#" className="block py-2 text-secondary font-medium">All Categories</a>
-              <a href="#" className="block py-2 text-secondary font-medium">Hot Deals</a>
-              <a href="#" className="block py-2 text-foreground font-medium">Brands Store</a>
-              <a href="#" className="block py-2 text-foreground font-medium">New Arrivals</a>
-              <a href="#" className="block py-2 text-foreground font-medium">Best Sellers</a>
+              <Link to="/categories" className="block py-2 text-secondary font-medium" onClick={() => setIsMenuOpen(false)}>
+                All Categories
+              </Link>
+              <Link to="/products/hot-selling-products" className="block py-2 text-secondary font-medium" onClick={() => setIsMenuOpen(false)}>
+                Hot Deals
+              </Link>
+              <Link to="/products" className="block py-2 text-foreground font-medium" onClick={() => setIsMenuOpen(false)}>
+                All Products
+              </Link>
+              <Link to="/products?featured=true" className="block py-2 text-foreground font-medium" onClick={() => setIsMenuOpen(false)}>
+                Featured
+              </Link>
+              <Link to="/products?trending=true" className="block py-2 text-foreground font-medium" onClick={() => setIsMenuOpen(false)}>
+                Trending
+              </Link>
             </div>
           </div>
         )}

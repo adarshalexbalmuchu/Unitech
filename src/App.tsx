@@ -10,6 +10,7 @@ import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
 import Orders from "./pages/Orders";
 import ProductsListing from "./pages/ProductsListing";
+import Categories from "./pages/Categories";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/categories" element={<Categories />} />
             <Route path="/products" element={<ProductsListing />} />
             <Route path="/products/:category" element={<ProductsListing />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
