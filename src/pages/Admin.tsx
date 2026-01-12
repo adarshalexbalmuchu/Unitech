@@ -494,7 +494,7 @@ const Admin = () => {
                       {product.category.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
                     </td>
                     <td className="px-4 py-4 text-sm font-medium text-foreground">
-                      ₹{product.price.toFixed(2)}
+                      {product.price !== null ? `₹${product.price.toFixed(2)}` : 'Price on Request'}
                     </td>
                     <td className="px-4 py-4 text-sm text-muted-foreground">
                       {product.stock}
