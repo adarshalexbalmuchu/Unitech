@@ -1,9 +1,10 @@
-import { Search, ShoppingCart, Heart, Menu, User, LogOut, ChevronDown, Speaker, Radio, Car, Zap, Settings, Flame } from "lucide-react";
-import { useState } from "react";
+import { Search, ShoppingCart, Heart, Menu, User, LogOut, ChevronDown, Speaker, Radio, Car, Zap, Settings, Flame, ShieldCheck } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
+import { supabase } from "@/integrations/supabase/client";
 import CartSidebar from "./CartSidebar";
 import SearchModal from "./SearchModal";
 import {
@@ -19,11 +20,34 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   
   const { user, signOut } = useAuth();
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const navigate = useNavigate();
+
+  // Check if user is admin
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      if (!user) {
+        setIsAdmin(false);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("is_admin")
+        .eq("id", user.id)
+        .single();
+
+      if (!error && data) {
+        setIsAdmin(data.is_admin || false);
+      }
+    };
+
+    checkAdminStatus();
+  }, [user]);
 
   const categories = [
     { name: "Tower Speakers", icon: Speaker, slug: "tower-speakers" },
@@ -89,6 +113,15 @@ const Header = () => {
                     <DropdownMenuItem onClick={() => navigate("/wishlist")} className="cursor-pointer">
                       Wishlist
                     </DropdownMenuItem>
+                    {isAdmin && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={() => navigate("/admin")} className="cursor-pointer text-primary">
+                          <ShieldCheck className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                          Admin Panel
+                        </DropdownMenuItem>
+                      </>
+                    )}
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
                       <LogOut className="w-4 h-4 mr-2" strokeWidth={1.5} />
