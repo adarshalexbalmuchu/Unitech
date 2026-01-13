@@ -46,56 +46,58 @@ const HeroBanner = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
 
   return (
-    <section className="relative overflow-hidden bg-black">
-      <div className="relative h-[400px] sm:h-[500px] lg:h-[600px]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-background">
+      <div className="relative h-[420px] sm:h-[520px] lg:h-[620px]">
         {banners.map((banner, index) => (
           <div
             key={banner.id}
-            className={`absolute inset-0 transition-all duration-1500 ease-in-out ${
+            className={`absolute inset-0 transition-all duration-[1200ms] ease-out ${
               index === currentSlide 
-                ? "opacity-100 translate-x-0" 
-                : index < currentSlide 
-                  ? "opacity-0 -translate-x-full" 
-                  : "opacity-0 translate-x-full"
+                ? "opacity-100 scale-100" 
+                : "opacity-0 scale-95"
             }`}
           >
-            {/* Background Image - Zoomed 16:9 */}
+            {/* Background Image with overlay */}
             <div className="absolute inset-0">
               <img 
                 src={banner.image} 
                 alt="UNITECH Banner"
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Modern style */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-card/80 backdrop-blur-sm hover:bg-card border border-border/50 p-2 rounded-md text-foreground/70 hover:text-foreground transition-all"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-lg hover:bg-white/20 border border-white/20 p-3 rounded-xl text-white transition-all hover:scale-110 shadow-2xl"
+        aria-label="Previous slide"
       >
-        <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+        <ChevronLeft className="w-6 h-6" strokeWidth={2.5} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-card/80 backdrop-blur-sm hover:bg-card border border-border/50 p-2 rounded-md text-foreground/70 hover:text-foreground transition-all"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-lg hover:bg-white/20 border border-white/20 p-3 rounded-xl text-white transition-all hover:scale-110 shadow-2xl"
+        aria-label="Next slide"
       >
-        <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+        <ChevronRight className="w-6 h-6" strokeWidth={2.5} />
       </button>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Dots Indicator - Improved */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {banners.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2.5 rounded-full transition-all duration-500 shadow-lg ${
               index === currentSlide 
-                ? "bg-primary w-8" 
-                : "bg-muted-foreground/50 hover:bg-muted-foreground w-2"
+                ? "bg-gradient-to-r from-primary to-primary/80 w-12 shadow-primary/50" 
+                : "bg-white/40 hover:bg-white/60 w-2.5"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

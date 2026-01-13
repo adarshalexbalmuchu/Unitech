@@ -14,40 +14,44 @@ const ProductSection = () => {
   const loading = activeTab === "new" ? loadingNew : loadingTrending;
 
   return (
-    <section className="py-12 sm:py-16 bg-background">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-10 sm:mb-12">
-          <button
-            onClick={() => setActiveTab("new")}
-            className={`text-base sm:text-lg font-semibold transition-all duration-300 pb-2 border-b-2 ${
-              activeTab === "new"
-                ? "text-foreground border-primary"
-                : "text-muted-foreground border-transparent hover:text-foreground"
-            }`}
-          >
-            New Arrivals
-          </button>
-          <button
-            onClick={() => setActiveTab("trending")}
-            className={`text-base sm:text-lg font-semibold transition-all duration-300 pb-2 border-b-2 ${
-              activeTab === "trending"
-                ? "text-primary border-primary"
-                : "text-muted-foreground border-transparent hover:text-primary"
-            }`}
-          >
-            Trending
-          </button>
+        {/* Header - More modern */}
+        <div className="flex flex-col items-center mb-12 sm:mb-16">
+          <div className="flex items-center gap-8 sm:gap-12 bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-2 shadow-xl">
+            <button
+              onClick={() => setActiveTab("new")}
+              className={`relative px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold transition-all duration-300 rounded-xl ${
+                activeTab === "new"
+                  ? "text-white bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              New Arrivals
+            </button>
+            <button
+              onClick={() => setActiveTab("trending")}
+              className={`relative px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold transition-all duration-300 rounded-xl ${
+                activeTab === "trending"
+                  ? "text-white bg-gradient-to-r from-primary to-primary/80 shadow-lg shadow-primary/30"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Trending
+            </button>
+          </div>
         </div>
 
         {/* Products Grid */}
         {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-10 w-10 border-2 border-primary border-t-transparent"></div>
+          <div className="flex justify-center items-center py-24">
+            <div className="relative">
+              <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary/20 border-t-primary"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/10"></div>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {products.map((product, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">{products.map((product, index) => (
               <div
                 key={product.id}
                 className="animate-fade-in"

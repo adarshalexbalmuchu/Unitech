@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface Product {
@@ -75,7 +75,11 @@ export const useProducts = (options: UseProductsOptions = {}) => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    const timer = setTimeout(() => {
+      fetchProducts();
+    }, options.search ? 300 : 0);
+    
+    return () => clearTimeout(timer);
   }, [options.category, options.brand, options.search, options.featured, options.trending, options.limit]);
 
   return { products, loading, error, refetch: fetchProducts };
