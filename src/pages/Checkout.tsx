@@ -58,18 +58,21 @@ const Checkout = () => {
       return;
     }
 
-    if (cartItems.length === 0 && step === 1) {
-      toast.error("Your cart is empty");
-      navigate("/");
+    // Don't redirect if cart is still loading
+    if (!cartLoading && cartItems.length === 0 && step === 1) {
+      toast.error("Your cart is empty. Add some products first!");
+      navigate("/products");
       return;
     }
 
     // Fetch user profile data
-    fetchProfile();
+    if (user) {
+      fetchProfile();
+    }
     
     // Load Razorpay script
     loadRazorpayScript();
-  }, [user, cartItems]);
+  }, [user, cartItems, cartLoading, step]);
 
   const fetchProfile = async () => {
     if (!user) return;
@@ -298,8 +301,32 @@ const Checkout = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-2 border-primary border-t-transparent"></div>
+        <div className="flex flex-col justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-primary border-t-transparent mb-4"></div>
+          <p className="text-muted-foreground">Loading your cart...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Show empty cart message if no items
+  if (cartItems.length === 0 && step === 1) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="flex flex-col justify-center items-center py-20 px-4">
+          <ShoppingBag className="w-24 h-24 text-muted-foreground/50 mb-6" />
+          <h2 className="text-2xl font-bold text-foreground mb-3">Your Cart is Empty</h2>
+          <p className="text-muted-foreground mb-6 text-center max-w-md">
+            Add some amazing products to your cart before checking out!
+          </p>
+          <Button 
+            onClick={() => navigate("/products")}
+            className="bg-gradient-to-r from-primary to-primary/80"
+          >
+            Browse Products
+          </Button>
         </div>
         <Footer />
       </div>
