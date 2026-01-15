@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { useProducts } from "@/hooks/useProducts";
-import { SlidersHorizontal, X } from "lucide-react";
+import { SlidersHorizontal, X, Speaker, Radio, Car, Zap, Settings, Flame, Grid3x3 } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Sheet,
@@ -19,6 +19,19 @@ const ProductSection = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const { products, loading } = useProducts({});
+
+  // Category links
+  const categories = [
+    { name: "All Products", path: "/products", icon: Grid3x3 },
+    { name: "Tower Speakers", path: "/products/tower-speakers", icon: Speaker },
+    { name: "Home Theatre", path: "/products/home-theatre-systems", icon: Speaker },
+    { name: "DTH Receivers", path: "/products/dth-receivers", icon: Radio },
+    { name: "Car Audio", path: "/products/car-stereo-systems", icon: Car },
+    { name: "Power Strips", path: "/products/power-strips", icon: Zap },
+    { name: "Audio Parts", path: "/products/speakers", icon: Settings },
+    { name: "Amplifiers", path: "/products/audio-amplifiers", icon: Speaker },
+    { name: "Hot Deals", path: "/products/hot-selling-products", icon: Flame },
+  ];
 
   // Get unique brands from products
   const brands = Array.from(new Set(products.map(p => p.brand).filter(Boolean))) as string[];
@@ -121,33 +134,34 @@ const ProductSection = () => {
     </div>
   );
 
-  const categoryLinks = [
-    { name: "All Products", path: "/products" },
-    { name: "Tower Speakers", path: "/products/tower-speakers" },
-    { name: "Home Theatre", path: "/products/home-theatre-systems" },
-    { name: "DTH Receivers", path: "/products/dth-receivers" },
-    { name: "Car Audio", path: "/products/car-stereo-systems" },
-    { name: "Power Strips", path: "/products/power-strips" },
-    { name: "Audio Parts", path: "/products/speakers" },
-    { name: "Amplifiers", path: "/products/audio-amplifiers" },
-    { name: "Hot Deals", path: "/products/hot-selling-products" },
-  ];
-
   return (
     <section className="py-8 sm:py-12 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
         {/* Category Navigation Bar */}
         <div className="mb-8 bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 shadow-lg">
-          <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
-            {categoryLinks.map((category) => (
-              <button
+          <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide pb-1">
+            {categories.map((category) => (
+              <Link
                 key={category.path}
-                onClick={() => navigate(category.path)}
-                className="whitespace-nowrap px-4 py-2.5 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+                to={category.path}
+                className="group whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0 flex items-center gap-2"
               >
+                <category.icon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
                 {category.name}
-              </button>
+              </Link>
             ))}
+            <Link
+              to="/products?featured=true"
+              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+            >
+              Featured
+            </Link>
+            <Link
+              to="/products?trending=true"
+              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+            >
+              Trending
+            </Link>
           </div>
         </div>
 
