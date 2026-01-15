@@ -23,7 +23,7 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
 
   const { products, loading } = useProducts({
     search: debouncedQuery,
-    limit: 10,
+    limit: 20,
   });
 
   useEffect(() => {
@@ -88,27 +88,39 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                     key={product.id}
                     onClick={() => {
                       onClose();
-                      // Could navigate to product detail page
+                      navigate(`/product/${product.id}`);
                     }}
                     className="w-full flex items-center gap-4 p-4 hover:bg-muted transition-colors text-left"
                   >
                     <img
                       src={product.image_url}
                       alt={product.name}
-                      className="w-14 h-14 object-cover rounded-lg bg-white"
+                      className="w-16 h-16 object-contain rounded-lg bg-muted/30"
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-foreground line-clamp-1">
+                      <div className="mb-1">
+                        <span className="inline-block px-2 py-0.5 text-xs font-semibold bg-primary/10 text-primary rounded-full">
+                          {product.category?.replace(/-/g, ' ').replace(/\\b\\w/g, l => l.toUpperCase()) || 'Product'}
+                        </span>
+                      </div>
+                      <h3 className="font-semibold text-foreground line-clamp-1 mb-1">
                         {product.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground">{product.brand}</p>
-                      <p className="text-secondary font-bold">
-                        ₹{Number(product.price).toLocaleString()}
-                      </p>
+                      <p className="text-xs text-muted-foreground mb-1">{product.brand}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-lg font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                          ₹{Number(product.price).toLocaleString()}
+                        </p>
+                        {product.original_price && product.original_price > product.price && (
+                          <span className="text-xs text-muted-foreground line-through">
+                            ₹{Number(product.original_price).toLocaleString()}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     {product.discount_percent > 0 && (
-                      <span className="bg-success text-success-foreground text-xs font-bold px-2 py-1 rounded">
-                        {product.discount_percent}% OFF
+                      <span className="bg-gradient-to-r from-destructive to-destructive/80 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
+                        -{product.discount_percent}% OFF
                       </span>
                     )}
                   </button>

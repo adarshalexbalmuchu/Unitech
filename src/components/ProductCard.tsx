@@ -15,6 +15,7 @@ interface ProductCardProps {
   price: number | null;
   originalPrice: number | null;
   discount: number;
+  category?: string;
 }
 
 const ProductCard = ({
@@ -26,6 +27,7 @@ const ProductCard = ({
   price,
   originalPrice,
   discount,
+  category,
 }: ProductCardProps) => {
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
@@ -154,6 +156,15 @@ const ProductCard = ({
             ({reviews})
           </span>
         </div>
+
+        {/* Category Badge */}
+        {category && (
+          <div className="mb-2">
+            <span className="inline-block px-2.5 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full">
+              {category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+            </span>
+          </div>
+        )}
 
         {/* Name */}
         <h3 className="font-semibold text-foreground line-clamp-2 text-base leading-tight min-h-[2.8rem] group-hover:text-primary transition-colors">

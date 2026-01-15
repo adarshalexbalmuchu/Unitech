@@ -269,6 +269,7 @@ const ProductSection = () => {
                       price={product.price ? Number(product.price) : null}
                       originalPrice={product.original_price ? Number(product.original_price) : null}
                       discount={product.discount_percent}
+                      category={product.category}
                     />
                   </div>
                 ))}
