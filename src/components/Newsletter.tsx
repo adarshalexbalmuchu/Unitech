@@ -48,36 +48,38 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="bg-card/50 border-y border-border/30 py-8 sm:py-10">
+    <section className="bg-gradient-to-br from-blue-50 to-primary/5 border-y border-gray-200 py-10 sm:py-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 border border-border/50 rounded-md flex items-center justify-center">
-              <Mail className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+          <div className="flex items-center gap-4 text-center md:text-left">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Mail className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground text-base">
+              <h3 className="font-bold text-gray-900 text-lg sm:text-xl">
                 Subscribe for Updates
               </h3>
-              <p className="text-muted-foreground text-xs">
+              <p className="text-gray-600 text-sm sm:text-base">
                 Product launches and industry news
               </p>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex w-full md:w-auto gap-2">
+          <form onSubmit={handleSubmit} className="flex w-full md:w-auto gap-2 sm:gap-3">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
+              placeholder="Enter your email"
               disabled={loading}
-              className="flex-1 md:w-72 bg-card border border-border rounded-lg py-2.5 px-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm disabled:opacity-50"
+              aria-label="Email address"
+              className="flex-1 md:w-80 bg-white border-2 border-gray-200 rounded-xl py-3 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base disabled:opacity-50 min-h-[48px]"
             />
             <button
               type="submit"
               disabled={loading}
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-5 py-2.5 rounded-lg transition-all whitespace-nowrap text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Subscribe to newsletter"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 sm:px-8 py-3 rounded-xl transition-all whitespace-nowrap text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md min-h-[48px]"
             >
               {loading ? "..." : "Subscribe"}
             </button>

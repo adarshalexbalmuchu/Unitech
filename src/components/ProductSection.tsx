@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 import { useProducts } from "@/hooks/useProducts";
 import { SlidersHorizontal, X, Speaker, Radio, Car, Zap, Settings, Flame, Grid3x3 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -239,11 +240,10 @@ const ProductSection = () => {
           {/* Products Grid */}
           <div className="flex-1">
             {loading ? (
-              <div className="flex justify-center items-center py-24">
-                <div className="relative">
-                  <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary/20 border-t-primary"></div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/10"></div>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                {[...Array(8)].map((_, index) => (
+                  <ProductCardSkeleton key={index} />
+                ))}
               </div>
             ) : filteredProducts.length === 0 ? (
               <div className="text-center py-20">

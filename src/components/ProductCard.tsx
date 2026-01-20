@@ -88,9 +88,10 @@ const ProductCard = ({
   };
 
   return (
-    <div 
+    <article 
       onClick={handleClick}
       className="bg-white rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+      aria-label={`${name} product card`}
     >
       {/* Image Container */}
       <div className="relative bg-gray-50 p-6 aspect-square overflow-hidden">
@@ -102,7 +103,7 @@ const ProductCard = ({
         />
         
         {/* Discount Badge */}
-        {discount > 0 && (
+        {discount > 0 && ( aria-label={`${discount}% discount`}
           <div className="absolute top-4 left-4 bg-red-500 text-white font-bold px-3 py-1.5 rounded-lg shadow-md">
             <span className="text-sm">-{discount}%</span>
           </div>
@@ -116,8 +117,8 @@ const ProductCard = ({
               liked 
                 ? "bg-red-500 text-white" 
                 : "bg-white text-gray-700 hover:bg-red-50 border border-gray-200"
-            }`}
-            title={liked ? "Remove from wishlist" : "Add to wishlist"}
+            aria-label={liked ? `Remove ${name} from wishlist` : `Add ${name} to wishlist`}
+            aria-pressed={liked}
           >
             <Heart className={`w-5 h-5 ${liked ? "fill-current" : ""}`} strokeWidth={2} />
           </button>
@@ -128,6 +129,8 @@ const ProductCard = ({
                 ? "bg-primary text-white"
                 : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200"
             }`}
+            aria-label={inCompare ? `Remove ${name} from compare` : `Add ${name} to compare`}
+            aria-pressed={inCompare
             title={inCompare ? "Remove from compare" : "Add to compare"}
           >
             <GitCompare className="w-5 h-5" strokeWidth={2} />
@@ -188,13 +191,14 @@ const ProductCard = ({
         {/* Actions - Clean button style */}
         <div className="flex items-center gap-2 pt-3">
           <button 
-            onClick={handleAddToCart}
-            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-5 rounded-xl text-sm flex items-center justify-center gap-2.5 transition-all duration-300 hover:shadow-lg active:scale-98"
+            aria-label={`Add ${name} to cart`}
           >
             <ShoppingCart className="w-5 h-5" strokeWidth={2} />
             Add to Cart
           </button>
         </div>
+      </div>
+    </article/div>
       </div>
     </div>
   );
